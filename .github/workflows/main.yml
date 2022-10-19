@@ -1,13 +1,17 @@
-name: learn-github-actions
-run-name: ${{ github.actor }} is learning GitHub Actions
 on: [push]
+
 jobs:
-  check-bats-version:
+    deploy_job:
     runs-on: ubuntu-latest
+    name: deploy
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+        -name: Checkout
+        uses: actions/checkout@v2
+        -name: deploy file
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
         with:
-          node-version: '14'
-      - run: apt-get install  bats
-      - run: bats -v
+            username: 'ubuntu'
+            server: '3.22.119.118'
+            ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }} 
+            local_path: './static/*'
+            remote_path: '/root/website/'
