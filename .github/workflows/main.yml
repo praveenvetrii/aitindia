@@ -1,7 +1,7 @@
-name: git
+name: Test
 
 on:
-  pull_request:
+  push:
     branches: [ master ]
 
   workflow_dispatch:
@@ -13,6 +13,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Pull the change from server
+        env:
+          USERNAME: ${{ secrets.USERNAME }}
+          TOKEN: ${{ secrets.TOKEN }}
         run: | 
-          git pull 
+          git pull origin master --rebase
+          echo $USERNAME
+          echo $TOKEN
+		  
           
