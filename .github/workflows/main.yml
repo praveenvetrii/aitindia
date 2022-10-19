@@ -21,5 +21,3 @@ jobs:
           git pull origin master --rebase
           echo $USERNAME
           echo $TOKEN
-		  
-          
