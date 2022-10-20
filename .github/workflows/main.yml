@@ -17,4 +17,4 @@ jobs:
           known_hosts: ${{ secrets.SSH_HOST }}
 
       - name: Pull
-        run: ssh git-user@18.116.61.76 "cd website && /usr/bin/git pull origin master”
+        run: ssh git-user@18.116.61.76 "cd website && /usr/bin/git pull origin master"
