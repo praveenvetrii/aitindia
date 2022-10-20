@@ -15,8 +15,9 @@ jobs:
       - name: Checkout the files
         uses: actions/checkout@v2
 
-      - name: Deploy to Server 1
-        uses: praveenvetrii/aitindia@master
+      - name: ssh deploy
+        uses: easingthemes/ssh-deploy@v2.2.11
+
         env:
           SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
           REMOTE_HOST: ${{ secrets.HOST_DNS }}
